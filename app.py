@@ -10,18 +10,19 @@ from flask import make_response
 
 app = Flask(__name__)
 
-@app.route('/')
-def api_hello():
-    data = {
-        'hello'  : 'world',
-        'number' : 3
-    }
-    js = json.dumps(data)
+@app.route('/', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+def api_echo():
+    if request.method == 'GET':
+        return "ECHO: GET\n"
 
-    resp = Response(js, status=200, mimetype='application/json')
-    resp.headers['Link'] = 'http://luisrei.com'
+    elif request.method == 'POST':
+        return "ECHO: POST\n"
 
-    return resp
+    elif request.method == 'PATCH':
+        return "ECHO: PACTH\n"
 
-if __name__ == '__main__':
-app.run(debug=True,host='0.0.0.0')
+    elif request.method == 'PUT':
+        return "ECHO: PUT\n"
+
+    elif request.method == 'DELETE':
+        return "ECHO: DELETE"
