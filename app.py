@@ -10,7 +10,7 @@ def homepage():
     <h1>Hello heroku</h1>
     """
 
-@app.route('/upload/<uuid>', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def add_message(uuid):
     content = request.get_json(silent=True)
     
