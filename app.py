@@ -10,7 +10,7 @@ from flask import make_response
 
 app = Flask(__name__)
 
-@app.route('/', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/', methods = ['GET', 'POST', 'PATCH', 'PUT'])
 def api_echo():
     if request.method == 'GET':
         return "ECHO: GET\n"
@@ -23,6 +23,3 @@ def api_echo():
 
     elif request.method == 'PUT':
         return "ECHO: PUT\n"
-
-    elif request.method == 'DELETE':
-        return "ECHO: DELETE"
