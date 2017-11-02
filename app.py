@@ -1,5 +1,7 @@
 from flask import Flask,request
 from datetime import datetime
+import json
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -16,10 +18,7 @@ def add_message():
 
     elif request.method == 'POST':  
       content = request.get_json(silent=True)
-      
-      return """
-      {cont}
-      """.format(cont=content)
+      return json.dumps(content)
 
 if __name__ == '__main__':
   app.run(debug=True, use_reloader=True)
